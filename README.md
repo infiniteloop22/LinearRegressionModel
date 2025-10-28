@@ -1,2 +1,2 @@
 # LinearRegressionModel
-Implementation of a linear regression model without libraries like scikit-learn, etc.
+Implementation of a statistical model without libraries like scikit-learn, etc.
