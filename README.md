@@ -18,7 +18,7 @@ A Python implementation of a single-variable linear regression model without mac
 
 ## Dataset
 
-This project utilizes the **Diabetes Database** sourced from [Kaggle](https://www.kaggle.com/code/azratuni/diabetes-database-linear-regression/input). 
+This project uses the **Diabetes Database** sourced from [Kaggle](https://www.kaggle.com/code/azratuni/diabetes-database-linear-regression/input). 
 
 While many diabetes datasets are formatted for binary classification (logistic regression), this specific set isolates continuous values. This implementation maps **insulin** as the input feature ($x$) to predict **glucose** as the continuous target ($y$).
 
