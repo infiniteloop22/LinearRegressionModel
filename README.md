@@ -1,13 +1,13 @@
-# Linear Regression Model
+# Linear/Multiple Regression and Logistic Regression Models
 
-A Python implementation of a single-variable linear regression model without machine learning libraries.
+A Python implementation of linear and logistic regression classification models without using machine learning libraries to implement said models.
+
+*Exception:* `scikit-learn` was only used for train-test data splitting.
 
 ## Features
-
-- **Model:** Single-variable linear regression model: $f_{w,b}(x) = wx + b$.
-- **Error Measure:** Standard squared error cost function ($J$).
-- **Optimization:** Gradient functions and gradient descent algorithms.
-- **Diabetes Study:** Machine learning logic specifically to continuous health data.
+- **Linear Models:** Single-variable linear regression and multiple linear regression using the closed-form **Normal Equation** \(\theta = (X^T X)^{-1} X^T y\).
+- **Logistic Regression:** Classification model using the sigmoid function and gradient descent optimization.
+- **Error & Optimization:** Implements standard squared error cost for regression and cross-entropy log loss for classification. For classification, the training and test sets were normalized with the z-score formula to prevent data leakage.
 
 ## Technologies Used
 
@@ -20,37 +20,9 @@ A Python implementation of a single-variable linear regression model without mac
 
 This project uses the **Diabetes Database** sourced from [Kaggle](https://www.kaggle.com/code/azratuni/diabetes-database-linear-regression/input). 
 
-While many diabetes datasets are formatted for binary classification (logistic regression), this specific set isolates continuous values. This implementation maps **insulin** as the input feature ($x$) to predict **glucose** as the continuous target ($y$).
-
 ---
 
-## Technical Notes
-
-### Mathematical Notation
-- **$x$**: Input feature variable (e.g., Insulin level).
-- **$y$**: Output target variable (e.g., Glucose level).
-- **$m$**: Total number of training examples.
-- **$(x^{(i)}, y^{(i)})$**: The $i^{th}$ specific training example index.
-
-### 1. Cost Function
-Used to measure the accuracy of the model. It calculates the difference between predictions ($\hat{y}$) and actual targets ($y$) using the **Squared Error Cost Function**:
-
-$$J(w,b) = \frac{1}{2m} \sum\limits_{i=1}^{m}(f_{w,b} (x^{(i)}) - y^{(i)})^{2}$$
-
-*The core objective of the algorithm is to discover values for $w$ and $b$ that minimize the output of $J$.*
-
-### 2. Gradient Function
-Computes the partial derivatives of the cost function with respect to weights ($w$) and biases ($b$) across each iteration:
-
-$$\frac{\partial J(w,b)}{\partial w} = \frac{1}{m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$$
-
-$$\frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) - y^{(i)})$$
-
-### 3. Gradient Descent
-Repeats optimization steps automatically until the cost function converges to its lowest possible value using the learning rate ($\alpha$):
-
-$$w = w - \alpha \cdot \frac{\partial J(w,b)}{\partial w}$$
-
-$$b = b - \alpha \cdot \frac{\partial J(w,b)}{\partial b}$$
-
----
+## Technical & Mathematical Summary
+- **Linear Regression Cost & Gradients:** Uses squared error $J(w,b) = \frac{1}{2m} \sum (f_{w,b}(x^{(i)}) - y^{(i)})^2$ and gradient descent parameter updates.
+- **Multiple Regression (Normal Equation):** Uses multiple linear regression in 1 step by taking the inverse of the matrix.
+- **Logistic Regression:** Uses the sigmoid function to output predictions $g(z) = \frac{1}{1 + e^{-z}}$ and uses an iterative approach (gradient descent) since no closed-form solution exists. Uses cross-entropy log loss to evaluate the model's errors.
